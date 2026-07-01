@@ -3,414 +3,99 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>skrrt skrrt</title>
+  <title>stephenknot</title>
 
   <style>
-    :root {
-      --ink: #11110f;
-      --paper: #e7dfc8;
-      --red: #d63c2e;
-      --yellow: #f3c34b;
-      --blue: #1f4e5f;
-      --shadow: #2d2622;
-    }
-
     * {
       box-sizing: border-box;
     }
 
-    html {
-      background: var(--paper);
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: #050505;
+      color: #e8e8e8;
+      font-family: Georgia, "Times New Roman", serif;
     }
 
     body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--ink);
-      font-family: "Courier New", ui-monospace, monospace;
-      background:
-        linear-gradient(90deg, rgba(17,17,15,.05) 1px, transparent 1px),
-        linear-gradient(rgba(17,17,15,.04) 1px, transparent 1px),
-        var(--paper);
-      background-size: 12px 12px;
-    }
-
-    .wrap {
       min-height: 100vh;
       display: grid;
-      grid-template-rows: auto 1fr auto;
-      padding: 20px;
-    }
-
-    header,
-    footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      border-top: 2px solid var(--ink);
-      border-bottom: 2px solid var(--ink);
-      padding: 10px 0;
+      place-items: center;
     }
 
     main {
-      display: grid;
-      place-items: center;
-      padding: 6vh 0;
+      width: min(100%, 42rem);
+      padding: 2rem;
     }
 
-    .panel {
-      width: min(980px, 100%);
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 22px;
+    .mark {
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      font-weight: 400;
+      letter-spacing: 0.015em;
+      line-height: 1.6;
     }
 
-    .hero {
-      border: 3px solid var(--ink);
-      background: #efe6ce;
-      box-shadow: 10px 10px 0 var(--ink);
-      padding: 18px;
-      position: relative;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 8px;
-      border: 1px dashed rgba(17, 17, 15, 0.35);
-      pointer-events: none;
-    }
-
-    .screen {
-      width: 100%;
-      border: 3px solid var(--ink);
-      background: #171717;
-      display: block;
-      image-rendering: pixelated;
-      image-rendering: crisp-edges;
-    }
-
-    .copy {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 20px;
-      align-items: end;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(42px, 11vw, 128px);
-      line-height: 0.82;
-      letter-spacing: -0.09em;
-      text-transform: uppercase;
-      max-width: 760px;
-    }
-
-    .tag {
-      margin: 12px 0 0;
-      max-width: 480px;
-      font-size: 15px;
-      line-height: 1.45;
-    }
-
-    .stamp {
-      width: 132px;
-      aspect-ratio: 1;
-      border: 3px solid var(--ink);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 1.15;
-      transform: rotate(7deg);
-      background:
-        linear-gradient(45deg, transparent 46%, rgba(17,17,15,.12) 47%, rgba(17,17,15,.12) 53%, transparent 54%),
-        var(--yellow);
-      box-shadow: 5px 5px 0 var(--ink);
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    a {
-      color: var(--ink);
+    .mark a {
+      color: inherit;
       text-decoration: none;
-      border: 2px solid var(--ink);
-      padding: 9px 12px;
-      background: #f6edd7;
-      box-shadow: 4px 4px 0 var(--ink);
-      font-weight: 700;
+      border-bottom: 1px solid rgba(232, 232, 232, 0.35);
     }
 
-    a:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 2px 2px 0 var(--ink);
+    .mark a:hover {
+      border-bottom-color: rgba(232, 232, 232, 0.9);
     }
 
-    @media (max-width: 720px) {
-      .copy {
-        grid-template-columns: 1fr;
+    .small {
+      margin-top: 4rem;
+      color: #555;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 0.45rem;
+      height: 0.45rem;
+      margin-left: 0.35rem;
+      border-radius: 50%;
+      background: #e8e8e8;
+      opacity: 0.18;
+      vertical-align: middle;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .dot {
+        animation: pulse 5.5s infinite;
       }
 
-      .stamp {
-        width: 104px;
-      }
-
-      header,
-      footer {
-        flex-direction: column;
+      @keyframes pulse {
+        0%, 82%, 100% { opacity: 0.12; }
+        86% { opacity: 0.9; }
+        89% { opacity: 0.18; }
+        93% { opacity: 0.55; }
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header>
-      <span>stephenknot dot com</span>
-      <span>low-res motorsport bureau</span>
-    </header>
+  <main>
+    <section class="mark" aria-label="Landing page">
+      this is not a portfolio.<br>
+      this is not a startup.<br>
+      this is not an accident.<br><br>
 
-    <main>
-      <section class="panel">
-        <div class="hero">
-          <canvas
-            id="bitmap"
-            class="screen"
-            width="192"
-            height="108"
-            aria-label="Bitmap art of a red wedge-shaped car on a desert road"
-          ></canvas>
-        </div>
+      <a href="mailto:hello@stephenknot.com">leave something here</a>
+      <span class="dot" aria-hidden="true"></span>
+    </section>
 
-        <div class="copy">
-          <div>
-            <h1>skrrt<br>skrrt!</h1>
-            <p class="tag">
-              A small landing page with fake speed, hard pixels, and the exact amount
-              of seriousness this domain currently deserves.
-            </p>
-          </div>
-
-          <div class="stamp">
-            hand<br>coded<br>pixels
-          </div>
-        </div>
-
-        <nav class="links" aria-label="Site links">
-          <a href="https://github.com/stephenknot">github</a>
-          <a href="mailto:hello@stephenknoth.com">contact</a>
-          <a href="#">garage closed</a>
-        </nav>
-      </section>
-    </main>
-
-    <footer>
-      <span>no template energy</span>
-      <span>v0.01 / quarter tank</span>
-    </footer>
-  </div>
-
-  <script>
-    const canvas = document.getElementById("bitmap");
-    const ctx = canvas.getContext("2d");
-
-    ctx.imageSmoothingEnabled = false;
-
-    const W = canvas.width;
-    const H = canvas.height;
-
-    const color = {
-      sky: "#1b1a22",
-      sky2: "#252330",
-      moon: "#f2deb0",
-      sand: "#c6a96c",
-      sand2: "#9f844f",
-      road: "#2d2c30",
-      roadLine: "#e6d38c",
-      red: "#d63c2e",
-      redDark: "#8d2b24",
-      redLight: "#f06a46",
-      glass: "#243b4a",
-      glassLight: "#6aa0a8",
-      tire: "#101012",
-      rim: "#d8d0b2",
-      ink: "#080808",
-      smoke: "#d9d0ba",
-      sign: "#f3c34b",
-      signDark: "#9d7428"
-    };
-
-    function px(x, y, w, h, c) {
-      ctx.fillStyle = c;
-      ctx.fillRect(x, y, w, h);
-    }
-
-    function text(t, x, y, size, c, align = "left") {
-      ctx.fillStyle = c;
-      ctx.font = `${size}px monospace`;
-      ctx.textAlign = align;
-      ctx.textBaseline = "top";
-      ctx.fillText(t, x, y);
-    }
-
-    function clear() {
-      px(0, 0, W, H, color.sky);
-    }
-
-    function sky() {
-      for (let y = 0; y < 50; y += 4) {
-        px(0, y, W, 2, y % 8 === 0 ? color.sky2 : color.sky);
-      }
-
-      px(145, 9, 13, 13, color.moon);
-      px(141, 9, 8, 13, color.sky);
-
-      const stars = [
-        [18, 10], [36, 18], [61, 8], [88, 22], [112, 12],
-        [171, 23], [151, 34], [24, 34], [75, 32]
-      ];
-
-      stars.forEach(([x, y], i) => {
-        px(x, y, i % 3 === 0 ? 2 : 1, 1, color.moon);
-      });
-    }
-
-    function desert() {
-      px(0, 50, W, 58, color.sand);
-
-      for (let x = 0; x < W; x += 8) {
-        px(x, 55 + ((x * 7) % 9), 5, 1, color.sand2);
-        px(x + 3, 84 + ((x * 5) % 7), 9, 1, color.sand2);
-      }
-
-      px(0, 49, W, 2, color.sand2);
-    }
-
-    function road() {
-      px(0, 72, W, 36, color.road);
-
-      for (let x = -20; x < W; x += 30) {
-        px(x, 90, 14, 3, color.roadLine);
-      }
-
-      px(0, 72, W, 3, "#17171a");
-      px(0, 106, W, 2, "#17171a");
-    }
-
-    function sign() {
-      px(17, 42, 30, 18, color.sign);
-      px(20, 45, 24, 12, "#1b1a22");
-      text("SKRRT", 22, 47, 5, color.sign);
-      text("EXIT", 25, 52, 4, color.sign);
-      px(29, 60, 4, 18, color.signDark);
-      px(24, 77, 14, 3, color.signDark);
-    }
-
-    function smoke() {
-      px(30, 65, 8, 4, color.smoke);
-      px(20, 67, 12, 5, color.smoke);
-      px(11, 70, 9, 4, color.smoke);
-      px(3, 73, 6, 3, color.smoke);
-      px(18, 62, 5, 2, "#a99f8d");
-    }
-
-    function car() {
-      // shadow
-      px(45, 78, 106, 7, "#161616");
-
-      // low wedge body
-      px(54, 59, 79, 5, color.redLight);
-      px(45, 64, 100, 8, color.red);
-      px(39, 72, 116, 8, color.red);
-      px(50, 80, 91, 5, color.redDark);
-
-      // nose and rear cuts
-      px(145, 68, 13, 6, color.redLight);
-      px(35, 70, 12, 5, color.redDark);
-      px(151, 74, 8, 3, color.redDark);
-
-      // cabin
-      px(82, 48, 27, 6, color.glass);
-      px(76, 54, 44, 8, color.glass);
-      px(88, 50, 13, 3, color.glassLight);
-      px(104, 55, 8, 3, color.glassLight);
-
-      // roof contour
-      px(78, 47, 25, 2, color.redLight);
-      px(105, 49, 10, 3, color.redLight);
-
-      // hood stripe and little cuts
-      px(117, 64, 20, 2, color.redLight);
-      px(57, 66, 14, 2, color.redDark);
-      px(130, 74, 18, 2, color.ink);
-      px(48, 76, 9, 2, color.ink);
-
-      // wheels
-      wheel(61, 81);
-      wheel(131, 81);
-
-      // headlight
-      px(150, 66, 6, 2, color.yellow);
-      px(154, 68, 3, 1, color.yellow);
-
-      // taillight
-      px(40, 69, 5, 2, color.yellow);
-    }
-
-    function wheel(cx, cy) {
-      px(cx - 9, cy - 9, 18, 18, color.tire);
-      px(cx - 7, cy - 10, 14, 2, color.tire);
-      px(cx - 7, cy + 8, 14, 2, color.tire);
-      px(cx - 10, cy - 6, 2, 12, color.tire);
-      px(cx + 8, cy - 6, 2, 12, color.tire);
-
-      px(cx - 4, cy - 4, 8, 8, color.rim);
-      px(cx - 1, cy - 6, 2, 12, color.road);
-      px(cx - 6, cy - 1, 12, 2, color.road);
-    }
-
-    function overlay() {
-      // sparse bitmap noise
-      for (let i = 0; i < 320; i++) {
-        const x = Math.floor(Math.random() * W);
-        const y = Math.floor(Math.random() * H);
-        if ((x + y) % 7 === 0) {
-          ctx.globalAlpha = 0.08;
-          px(x, y, 1, 1, "#000");
-          ctx.globalAlpha = 1;
-        }
-      }
-
-      // chunky border
-      px(0, 0, W, 3, color.ink);
-      px(0, H - 3, W, 3, color.ink);
-      px(0, 0, 3, H, color.ink);
-      px(W - 3, 0, 3, H, color.ink);
-    }
-
-    function draw() {
-      clear();
-      sky();
-      desert();
-      road();
-      sign();
-      smoke();
-      car();
-      text("BITMAP HIGHWAY TEST", 8, 8, 6, "#e7dfc8");
-      text("skrrt skrrt!", 123, 93, 7, "#e7dfc8");
-      overlay();
-    }
-
-    draw();
-  </script>
+    <div class="small">
+      stephenknot.com / skrrt skrrt
+    </div>
+  </main>
 </body>
 </html>
